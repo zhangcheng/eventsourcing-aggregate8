@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 from datetime import datetime
 from typing import Any, Dict, List
 from uuid import UUID
@@ -35,12 +36,17 @@ class Snapshot(DomainEvent, CanSnapshotAggregate):
     state: Dict[str, Any]
 
 
+@dataclass
+class Trick():
+    name: str
+
+
 class Dog(Aggregate):
     @event("Registered")
     def __init__(self, name: str) -> None:
         self.name = name
-        self.tricks: List[str] = []
+        self.tricks: List[Trick] = []
 
     @event("TrickAdded")
     def add_trick(self, trick: str) -> None:
-        self.tricks.append(trick)
+        self.tricks.append(Trick(name=trick))

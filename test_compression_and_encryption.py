@@ -1,7 +1,7 @@
 from unittest import TestCase
 
 from eventsourcing.cipher import AESCipher
-from eventsourcing.examples.aggregate8.application import DogSchool
+from .application import DogSchool
 
 
 class TestDogSchool(TestCase):
